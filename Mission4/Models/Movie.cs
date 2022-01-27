@@ -8,6 +8,10 @@ namespace Mission4.Models
 {
     public class Movie
     {
+        //Movie class
+
+        //Set movieId as PK and required. Everything is required except for Edited, LentTo, and Notes. Notes has a max
+        //length of 25 characters. 
         [Key]
         [Required]
         public int MovieId { get; set; }

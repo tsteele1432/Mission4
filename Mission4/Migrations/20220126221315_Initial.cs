@@ -6,6 +6,8 @@ namespace Mission4.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            
+            //Layout of Movie table
             migrationBuilder.CreateTable(
                 name: "movies",
                 columns: table => new

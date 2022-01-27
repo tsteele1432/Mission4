@@ -19,6 +19,8 @@ namespace Mission4.Models
         protected override void OnModelCreating(ModelBuilder mb)
         {
             mb.Entity<Movie>().HasData(
+                
+                //seeded 3 movies
                 new Movie
                 {
                     MovieId = 1,

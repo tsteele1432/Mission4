@@ -20,22 +20,26 @@ namespace Mission4.Controllers
             blahContext = someName;
         }
 
+        //Returns Homepage
         public IActionResult Index()
         {
             return View();
         }
 
+        //Returns MyPodcasts page
         public IActionResult MyPodcasts()
         {
             return View();
         }
 
+        //Get method for MovieForm page
         [HttpGet]
         public IActionResult MovieForm()
         {
             return View();
         }
 
+        //Post method for MovieForm page
         [HttpPost]
         public IActionResult MovieForm(Movie movie)
         {

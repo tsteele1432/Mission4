@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@* shared layout for view pages *@
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -9,12 +11,16 @@
 </head>
 <body>
 
+
+    @* set nav for all pages *@
     <nav>
         <a asp-controller="Home" asp-action="Index">Home</a>   
         <a asp-controller="Home" asp-action="MyPodcasts">My Podcasts</a>   
         <a asp-controller="Home" asp-action="MovieForm">Movie Form</a>
     </nav>
 
+
+    @* space for different views to input page code *@
     <div>
         @RenderBody()
     </div>

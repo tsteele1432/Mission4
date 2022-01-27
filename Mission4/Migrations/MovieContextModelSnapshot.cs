@@ -55,6 +55,7 @@ namespace Mission4.Migrations
                     b.ToTable("movies");
 
                     b.HasData(
+                        //Shows the inital movies that are seeded
                         new
                         {
                             MovieId = 1,

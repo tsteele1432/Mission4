@@ -1,4 +1,6 @@
 ﻿
+@*Page where user can fill out form to add movie to database*@
+
 @{
     ViewData["Title"] = "Movie Form";
 }
@@ -6,7 +8,11 @@
 
 <h1>Movie Form</h1>
 
+
+
 <form method="post">
+
+    @*asp-for on both input and label allows for easier user experience. Will redirect to input if label is clicked.*@ 
     <label asp-for="Title">Title:</label>
     <input asp-for="Title" />
     <br />
@@ -23,6 +29,8 @@
     <input asp-for="Director" />
     <br />
 
+
+    @*setup dropdown rating*@
     <label asp-for="Rating">Rating:</label>
     <select asp-for="Rating">
         <option value="G">G</option>
@@ -49,5 +57,7 @@
 
     <button type="submit">Submit</button>
 
+
+    @* allows for proper validation use *@
     <div asp-validation-summary="All"></div>
 </form>
