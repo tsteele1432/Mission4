@@ -13,6 +13,7 @@ namespace Mission4.Controllers
     public class HomeController : Controller
     {
         
+        //create movie context
         private MovieContext movieContext { get; set; }
 
         public HomeController(MovieContext someName)
@@ -46,6 +47,9 @@ namespace Mission4.Controllers
         [HttpPost]
         public IActionResult MovieForm(Movie movie)
         {
+
+            //checks if movie is valid, if not valid 
+            //shows validators, if is valid passes movie to database
             if (ModelState.IsValid)
             {
                 movieContext.Add(movie);
@@ -62,6 +66,8 @@ namespace Mission4.Controllers
 
         }
 
+
+        //passes movies from database to movielist view to show movies
         [HttpGet]
         public IActionResult MovieList()
         {
@@ -72,6 +78,8 @@ namespace Mission4.Controllers
             return View(movies);
         }
 
+
+        //passes information from movie to edit to edit page
         [HttpGet]
         public IActionResult Edit(int movieid)
         {
@@ -82,6 +90,8 @@ namespace Mission4.Controllers
             return View("MovieForm", movie);
         }
 
+
+        //updates database
         [HttpPost]
         public IActionResult Edit (Movie blah)
         {
@@ -91,6 +101,8 @@ namespace Mission4.Controllers
             return RedirectToAction("MovieList");
         }
 
+
+        //brings up delete confirmation page
         [HttpGet]
         public IActionResult Delete(int movieid)
         {
@@ -99,6 +111,8 @@ namespace Mission4.Controllers
             return View(movie);
         }
 
+
+        //deletes movie record from database
         [HttpPost]
         public IActionResult Delete (Movie movie)
         {

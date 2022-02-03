@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mission4.Models
 {
+    //category class for redundancy
     public class Category
     {
         [Key]

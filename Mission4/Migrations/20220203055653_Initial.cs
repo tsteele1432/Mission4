@@ -36,6 +36,7 @@ namespace Mission4.Migrations
                 },
                 constraints: table =>
                 {
+                    //here we see the foreign key relationship
                     table.PrimaryKey("PK_movies", x => x.MovieId);
                     table.ForeignKey(
                         name: "FK_movies_categories_CategoryId",

@@ -19,6 +19,8 @@ namespace Mission4.Models
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
+
+            //seed categories
             mb.Entity<Category>().HasData(
                 new Category { CategoryId=1, CategoryName="Thriller"},
                 new Category { CategoryId=2, CategoryName = "Drama" },
