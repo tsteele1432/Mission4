@@ -12,13 +12,21 @@
 
 <form method="post">
 
-    @*asp-for on both input and label allows for easier user experience. Will redirect to input if label is clicked.*@ 
+    <div asp-validation-summary="All"></div>
+
+    @*asp-for on both input and label allows for easier user experience. Will redirect to input if label is clicked.*@
     <label asp-for="Title">Title:</label>
     <input asp-for="Title" />
     <br />
 
-    <label asp-for="Category">Category:</label>
-    <input asp-for="Category" />
+    <label asp-for="CategoryId">Category:</label>
+    <select asp-for="CategoryId">
+        <option>Select a Category</option>
+        @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.CategoryId">@c.CategoryName</option>
+            }
+    </select>
     <br />
 
     <label asp-for="Year">Year:</label>
@@ -59,5 +67,5 @@
 
 
     @* allows for proper validation use *@
-    <div asp-validation-summary="All"></div>
+
 </form>

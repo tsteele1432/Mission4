@@ -15,15 +15,55 @@ namespace Mission4.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.22");
 
+            modelBuilder.Entity("Mission4.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            CategoryName = "Thriller"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            CategoryName = "Drama"
+                        },
+                        new
+                        {
+                            CategoryId = 3,
+                            CategoryName = "Crime"
+                        },
+                        new
+                        {
+                            CategoryId = 4,
+                            CategoryName = "Romance"
+                        },
+                        new
+                        {
+                            CategoryId = 5,
+                            CategoryName = "Comedy"
+                        });
+                });
+
             modelBuilder.Entity("Mission4.Models.Movie", b =>
                 {
                     b.Property<int>("MovieId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Director")
                         .IsRequired()
@@ -52,14 +92,15 @@ namespace Mission4.Migrations
 
                     b.HasKey("MovieId");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("movies");
 
                     b.HasData(
-                        //Shows the inital movies that are seeded
                         new
                         {
                             MovieId = 1,
-                            Category = "Mystery/Thriller",
+                            CategoryId = 1,
                             Director = "Martin Scorsese",
                             Edited = false,
                             Rating = "R",
@@ -69,7 +110,7 @@ namespace Mission4.Migrations
                         new
                         {
                             MovieId = 2,
-                            Category = "Comedy/Drama",
+                            CategoryId = 2,
                             Director = "Richard Curtis",
                             Edited = false,
                             Rating = "R",
@@ -79,13 +120,22 @@ namespace Mission4.Migrations
                         new
                         {
                             MovieId = 3,
-                            Category = "Crime/Thriller",
+                            CategoryId = 3,
                             Director = "Martin Scorsese",
                             Edited = false,
                             Rating = "R",
                             Title = "The Departed",
                             Year = 2006
                         });
+                });
+
+            modelBuilder.Entity("Mission4.Models.Movie", b =>
+                {
+                    b.HasOne("Mission4.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
